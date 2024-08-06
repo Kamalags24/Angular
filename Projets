@@ -1,0 +1,102 @@
+Pour bien maîtriser Angular, il est essentiel de mettre en pratique les concepts appris à travers des projets concrets. Voici trois projets de différents niveaux de difficulté qui t'aideront à appliquer les compétences acquises tout en te préparant à des scénarios réels.
+
+### 1. **Projet Débutant : Liste de Tâches (To-Do List)**
+   - **Objectif** : Créer une application simple pour gérer une liste de tâches avec des fonctionnalités de base comme l'ajout, la suppression et la modification des tâches.
+   - **Fonctionnalités** :
+     - Ajouter une nouvelle tâche.
+     - Marquer une tâche comme complétée.
+     - Supprimer une tâche.
+     - Filtrer les tâches (toutes, complétées, en cours).
+   - **Technologies Utilisées** : Angular, Services, Reactive Forms.
+   - **Étapes** :
+     1. **Initialisation** : Créer une nouvelle application Angular.
+     2. **Création du Composant** : Créer un composant pour la liste des tâches.
+     3. **Service de Gestion des Tâches** : Créer un service pour gérer l'ajout, la suppression et la modification des tâches.
+     4. **Interface Utilisateur** : Créer le template HTML avec les formulaires et les boutons nécessaires.
+     5. **Data Binding** : Utiliser le data binding pour lier les formulaires et les listes de tâches au composant.
+
+### 2. **Projet Intermédiaire : Application de Gestion de Contacts**
+   - **Objectif** : Développer une application pour gérer une liste de contacts avec des fonctionnalités de recherche, de filtrage et de gestion détaillée des informations de chaque contact.
+   - **Fonctionnalités** :
+     - Ajouter, modifier et supprimer des contacts.
+     - Rechercher et filtrer les contacts.
+     - Afficher les détails d'un contact.
+   - **Technologies Utilisées** : Angular, Services, Reactive Forms, Routing, HTTP Client.
+   - **Étapes** :
+     1. **Initialisation** : Créer une nouvelle application Angular.
+     2. **Modules et Routage** : Configurer les modules et le routage pour naviguer entre les pages (liste des contacts, détails, formulaire de gestion).
+     3. **Composants de Contacts** : Créer des composants pour la liste des contacts, les détails et le formulaire de gestion.
+     4. **Service de Gestion des Contacts** : Créer un service pour gérer les opérations CRUD (Create, Read, Update, Delete) avec un backend simulé ou réel.
+     5. **Interface Utilisateur** : Créer le template HTML pour les différents composants.
+     6. **Communication Backend** : Utiliser `HttpClient` pour récupérer et envoyer des données au backend.
+
+### 3. **Projet Avancé : Application E-commerce**
+   - **Objectif** : Créer une application e-commerce complète avec gestion des utilisateurs, catalogue de produits, panier et commandes.
+   - **Fonctionnalités** :
+     - Inscription et authentification des utilisateurs.
+     - Gestion du catalogue de produits.
+     - Ajout et gestion des produits dans le panier.
+     - Passer des commandes.
+     - Gestion des commandes par l'administrateur.
+   - **Technologies Utilisées** : Angular, Services, Reactive Forms, Routing, HTTP Client, Guards, Intercepteurs, Animations.
+   - **Étapes** :
+     1. **Initialisation** : Créer une nouvelle application Angular.
+     2. **Modules et Routage** : Configurer les modules et le routage pour les différentes sections (authentification, catalogue, panier, commandes).
+     3. **Composants d'Authentification** : Créer des composants pour l'inscription, la connexion et la gestion des utilisateurs.
+     4. **Service d'Authentification** : Créer un service pour gérer l'authentification des utilisateurs.
+     5. **Composants de Catalogue** : Créer des composants pour afficher la liste des produits, les détails et les filtres de recherche.
+     6. **Service de Gestion des Produits** : Créer un service pour gérer les produits avec un backend.
+     7. **Composants de Panier et Commandes** : Créer des composants pour gérer le panier et passer des commandes.
+     8. **Service de Panier et Commandes** : Créer des services pour gérer les opérations liées au panier et aux commandes.
+     9. **Intercepteurs et Guards** : Ajouter des intercepteurs pour gérer les requêtes HTTP et des guards pour protéger les routes.
+     10. **Animations et Optimisation** : Ajouter des animations pour améliorer l'expérience utilisateur et optimiser les performances de l'application.
+
+### Exemples de Code
+
+#### Projet Débutant : Liste de Tâches
+**app.component.html**
+```html
+<div>
+  <h1>To-Do List</h1>
+  <input type="text" [(ngModel)]="newTask" placeholder="New task">
+  <button (click)="addTask()">Add Task</button>
+  <ul>
+    <li *ngFor="let task of tasks">
+      <input type="checkbox" [(ngModel)]="task.completed">
+      <span [class.completed]="task.completed">{{ task.name }}</span>
+      <button (click)="removeTask(task)">Remove</button>
+    </li>
+  </ul>
+</div>
+```
+
+**app.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  newTask = '';
+  tasks = [
+    { name: 'Task 1', completed: false },
+    { name: 'Task 2', completed: false }
+  ];
+
+  addTask() {
+    if (this.newTask) {
+      this.tasks.push({ name: this.newTask, completed: false });
+      this.newTask = '';
+    }
+  }
+
+  removeTask(task) {
+    this.tasks = this.tasks.filter(t => t !== task);
+  }
+}
+```
+
+Ces projets te permettront de progresser de manière pratique en Angular en travaillant sur des fonctionnalités essentielles et en t'adaptant à des scénarios de développement réels.
